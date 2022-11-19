@@ -1,0 +1,29 @@
+Battle Brothers/Mount & Blade inspired singleplayer game
+
+You build a party and travel around a map featuring villages, towns, and cities.
+
+You can be a bandit, mercenary, lone soldier, found a village and manage it, etc. . .
+
+--- Basic Foundations ---
+
+- Map Generation
+--- Biomes
+--- Economy/City Building Aspect
+----- Three Economic Tiers
+-------- Raw Materials
+----------- Mines - Clay/Quarries/Iron/Silver/Gold
+----------- Farms
+----------- Fishing
+----------- Forests - Hunting/Timber
+-------- Manufacturing and Storage
+----------- Warehouses
+----------- Workshops
+----------- Butchers/Bakers/etc
+-------- Financial Institutions
+----------- Taverns
+----------- Banks
+----------- Shops
+
+- Party System
+--- Group Management
+--- Combat

@@ -1,0 +1,30 @@
+#include <SFML\Graphics.hpp>
+
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(640, 480), "SP Game");
+
+
+    player.setPosition(206, 206);
+    sf::Texture playerTexture;
+    playerTexture.loadFromFile("./Sprites/sprites.png");
+    player.setTexture(&playerTexture);
+
+    player.setTextureRect(sf::IntRect(16, 16, 16, 32));
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(player);
+        window.display();
+    }
+
+    return 0;
+}

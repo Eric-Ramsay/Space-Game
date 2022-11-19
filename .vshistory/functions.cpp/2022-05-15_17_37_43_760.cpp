@@ -1,0 +1,3 @@
+sf::Color getColor() {
+
+}

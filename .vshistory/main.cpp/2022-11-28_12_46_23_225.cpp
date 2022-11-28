@@ -393,9 +393,9 @@ int main() {
 					y1 += sin(a) * 10;
 					drawPosition(x1, y1, 1, 0, sf::Color::Red);
 				}*/
-				//Print(to_str(posA(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 100);
-				//Print("X: " + to_str(multX(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 75);
-				//Print("Y: " + to_str(multY(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 50);
+				Print(to_str(posA(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 100);
+				Print("X: " + to_str(multX(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 75);
+				Print("Y: " + to_str(multY(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 50);
 			}
 		}
 		window.display();

@@ -119,7 +119,7 @@ void force(Ship* s, Position f, bool recurs = true) {
 	if (abs(y_force) < .001) {
 		y_force = 0;
 	}
-	s->pos.da += (x_force + y_force) / (30 * s->e_mass);
+	//s->pos.da += (x_force + y_force) / (30 * s->e_mass);
 
 	/*if (recurs) {
 		for (Ship* ship : s->connected) {
@@ -269,8 +269,8 @@ void moveShip(Ship* s, bool up, bool down, bool left, bool right) {
 				Position thrust;
 				thrust.a = s->pos.a;
 				//Pretty sure this is negative bc right and left are flipped if u go by 90 degree increments. whoops
-				thrust.dx = parts[p.i].thrust * -cos((PI / 2 * (1 + p.rotation)));
-				thrust.dy = parts[p.i].thrust * sin((PI / 2 * (1 + p.rotation)));
+				thrust.dx = 100 * parts[p.i].thrust * -cos((PI / 2 * (1 + p.rotation)));
+				thrust.dy = 100 * parts[p.i].thrust * sin((PI / 2 * (1 + p.rotation)));
 				thrust.x = partX(s->pos, p);
 				thrust.y = partY(s->pos, p);
 				force(s, thrust);
@@ -450,8 +450,8 @@ std::deque<PathPos> path(Ship a, float x, float y, std::vector<Planet> planets, 
 										applyGravity(copy.pos, p);
 									}
 								}
-								PathPos shipVar(copy.pos, closed.size() - 1, u, d, l, r);
-								shipVar.num = num;
+								PathPos ape(copy.pos, closed.size() - 1, u, d, l, r);
+								ape.num = num;
 								for (Planet p : planets) {
 									if (planetaryCollision(&copy, p)) {
 										found = true;
@@ -460,7 +460,7 @@ std::deque<PathPos> path(Ship a, float x, float y, std::vector<Planet> planets, 
 								}
 								if (!found) {
 									for (PathPos p : closed) {
-										if (shipVar == p) {
+										if (ape == p) {
 											found = true;
 											break;
 										}
@@ -468,20 +468,20 @@ std::deque<PathPos> path(Ship a, float x, float y, std::vector<Planet> planets, 
 									if (!found) {
 										int size = open.size();
 										for (int i = size - 1; i >= 0; i--) {
-											if (shipVar == open[i]) {
+											if (ape == open[i]) {
 												found = true;
 												break;
 											}
 										}
 										if (!found) {
-											shipVar.h = dist(x, y, copy.pos.x, copy.pos.y);
-											shipVar.g = dist(a.pos.x, a.pos.y, shipVar.pos.x, shipVar.pos.y);
+											ape.h = dist(x, y, copy.pos.x, copy.pos.y);
+											ape.g = dist(a.pos.x, a.pos.y, ape.pos.x, ape.pos.y);
 											if (slow_down) {
-												shipVar.v = 2 * calcV(shipVar.pos, x, y, planets, shipVar.num) * max(.5, ((shipVar.g - shipVar.h) / tot_dist));
+												ape.v = 2 * calcV(ape.pos, x, y, planets, ape.num) * max(.5, ((ape.g - ape.h) / tot_dist));
 											}
-											shipVar.f = cur_fuel - copy.energy;
-											shipVar.h = shipVar.h + .75 * shipVar.g + shipVar.v + shipVar.f * .1;
-											open.push_back(shipVar);
+											ape.f = cur_fuel - copy.energy;
+											ape.h = ape.h + .75 * ape.g + ape.v + ape.f * .1;
+											open.push_back(ape);
 										}
 									}
 								}

@@ -197,9 +197,12 @@ void drawPosition(Point p) {
 
 
 void drawFutureTrajectory(Ship s, std::vector<Planet>& plan) {
-	for (int i = 0; i < 1000; i++) {
-		updatePosition(s.pos, s.x, s.y);
-		if (i % 10 == 0) {
+	for (int i = 0; i < 2000; i++) {
+		moveShip(&s);
+		for (Planet p : plan) {
+			applyGravity(s.pos, p);
+		}
+		if (i % 20 == 0) {
 			drawPosition(s.pos);
 		}
 	}

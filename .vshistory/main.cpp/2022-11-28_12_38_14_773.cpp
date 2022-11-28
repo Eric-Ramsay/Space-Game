@@ -86,8 +86,8 @@ int main() {
 		window.setView(view);
 		window.clear();
 		shape.setPosition(view.getCenter().x - view.getSize().x / 2, view.getCenter().y - view.getSize().y / 2);
-		sf::Vector2<float> shipVar(view.getCenter().x * .025, view.getCenter().y * .025);
-		space.setUniform("offset", sf::Glsl::Vec2({shipVar}));
+		sf::Vector2<float> ape(view.getCenter().x * .025, view.getCenter().y * .025);
+		space.setUniform("offset", sf::Glsl::Vec2({ape}));
 		window.draw(shape, &space);
 
 		FPS = 1.f / clock.getElapsedTime().asSeconds();
@@ -241,16 +241,14 @@ int main() {
 						player->path = path(*player, mX, mY, planets);
 					}*/
 
-					//Bullet* b = new Bullet(mouseForce);
-					//b->next = bullets;
-					//bullets = b;
+					Bullet* b = new Bullet(mouseForce);
+					b->next = bullets;
+					bullets = b;
 					
-					if (rand() % 25 == 0) {
-						explosions.push_back(Explosion(mX, mY, 33));
-					}
+					//explosions.push_back(Explosion(mX, mY, 33));
 				}
 			}
-			else if (event.type == sf::Event::MouseButtonPressed) {
+			/*else if (event.type == sf::Event::MouseButtonPressed) {
 				if (event.mouseButton.button == sf::Mouse::Left) {
 					if (player != nullptr) {
 						for (Part p : player->parts) {
@@ -265,7 +263,7 @@ int main() {
 						}
 					}
 				}
-			}
+			}*/
 		}
 
 		//Here stuff that shouldn't be linked to framerate is handled, ie Ship Movement
@@ -393,9 +391,9 @@ int main() {
 					y1 += sin(a) * 10;
 					drawPosition(x1, y1, 1, 0, sf::Color::Red);
 				}*/
-				//Print(to_str(posA(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 100);
-				//Print("X: " + to_str(multX(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 75);
-				//Print("Y: " + to_str(multY(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 50);
+				Print(to_str(posA(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 100);
+				Print("X: " + to_str(multX(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 75);
+				Print("Y: " + to_str(multY(player->pos, Position(mX, mY))), player->pos.x - 200, player->pos.y - 50);
 			}
 		}
 		window.display();

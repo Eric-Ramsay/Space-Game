@@ -44,12 +44,12 @@ struct Position {
 	}
 
 	Position& operator *(float rhs)	{
-		Position shipVar = *this;
-		shipVar.dx *= rhs;
-		shipVar.dy *= rhs;
-		//shipVar.da *= rhs;
+		Position ape = *this;
+		ape.dx *= rhs;
+		ape.dy *= rhs;
+		//ape.da *= rhs;
 		
-		return shipVar;
+		return ape;
 	}
 
 	Position(float x1 = 0, float y1 = 0, float a1 = 0, float dx1 = 0, float dy1 = 0, float da1 = 0) {

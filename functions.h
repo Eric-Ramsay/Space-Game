@@ -262,10 +262,10 @@ float multY(Position a, Position b) {
 
 
 void updateExplosion(Explosion& e) {
-	e.size++;
 	int n = e.points.size();
 	float angle = 0;
 	if (e.size < e.max) {
+		e.size += e.max / 10;
 		for (int i = 0; i < n; i++) {
 			angle += (2 * PI) / n;
 			e.points[i].x = e.x + ((2 + (rand() % 70) / 100.0) * e.size) * cos(angle);
@@ -273,6 +273,11 @@ void updateExplosion(Explosion& e) {
 		}
 	}
 	else {
-		e.max -= 5;
+		e.max -= e.size / 20;
+		for (int i = 0; i < n; i++) {
+			angle += (2 * PI) / n;
+			e.points[i].x = e.x + ((2 + (rand() % 70) / 100.0) * e.max) * cos(angle);
+			e.points[i].y = e.y + ((2 + (rand() % 70) / 100.0) * e.max) * sin(angle);
+		}
 	}
 }

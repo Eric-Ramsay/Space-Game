@@ -131,7 +131,7 @@ struct Explosion {
 	float x;
 	float y;
 	float max;
-	float size = 0;
+	int size = 0;
 	std::vector<Point> points = {};
 	Explosion(float x1, float y1, int strength = 33, int n = 32) {
 		x = x1;

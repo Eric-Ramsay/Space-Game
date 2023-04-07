@@ -234,6 +234,7 @@ unsigned long long int d2(Position a, Position b) {
 	return d2(a.x, a.y, b.x, b.y);
 }
 
+
 bool planetClose(Position a, Planet p, int range) {
 	return abs((int)p.x - (int)a.x) < range && abs((int)p.y - (int)a.y) < range;
 }
@@ -261,10 +262,10 @@ float multY(Position a, Position b) {
 
 
 void updateExplosion(Explosion& e) {
+	e.size++;
 	int n = e.points.size();
 	float angle = 0;
 	if (e.size < e.max) {
-		e.size += .6;
 		for (int i = 0; i < n; i++) {
 			angle += (2 * PI) / n;
 			e.points[i].x = e.x + ((2 + (rand() % 70) / 100.0) * e.size) * cos(angle);
@@ -272,11 +273,10 @@ void updateExplosion(Explosion& e) {
 		}
 	}
 	else {
-		e.max -= .3;
+		e.max -= 1;
 		for (int i = 0; i < n; i++) {
-			angle += (2 * PI) / n;
-			e.points[i].x = e.x + ((2 + (rand() % 70) / 100.0) * e.max) * cos(angle);
-			e.points[i].y = e.y + ((2 + (rand() % 70) / 100.0) * e.max) * sin(angle);
+			e.points[i].x = e.x + ((2 + (rand() % 70) / 100.0) * e.size) * cos(angle);
+			e.points[i].y = e.y + ((2 + (rand() % 70) / 100.0) * e.size) * sin(angle);
 		}
 	}
 }

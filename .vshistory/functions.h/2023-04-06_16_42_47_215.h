@@ -234,6 +234,7 @@ unsigned long long int d2(Position a, Position b) {
 	return d2(a.x, a.y, b.x, b.y);
 }
 
+
 bool planetClose(Position a, Planet p, int range) {
 	return abs((int)p.x - (int)a.x) < range && abs((int)p.y - (int)a.y) < range;
 }

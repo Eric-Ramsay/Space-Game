@@ -253,8 +253,8 @@ int main() {
 							if (parts[p.i].turret) {
 								Position pos(partX(player->pos, p), partY(player->pos, p), player->pos.a, player->pos.dx, player->pos.dy, player->pos.da);
 								pos.a = p.turret_angle;
-								pos.dx = fX(pos, p.turret_angle);
-								pos.dy = fY(pos, p.turret_angle);
+								pos.dx = (sin(pos.a) * pos.dy + cos(pos.a) * pos.dx);
+								pos.dy = (sin(pos.a) * pos.dx - cos(pos.a) * pos.dy);
 								Bullet* b = new Bullet(pos);
 								//b->pos.x += cos(b->pos.a + rad(90)) * 6;
 								//b->pos.y += sin(b->pos.a + rad(90)) * 6;

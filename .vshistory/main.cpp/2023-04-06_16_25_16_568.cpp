@@ -70,7 +70,7 @@ int main() {
 		shipyard.push_back(Part());
 	}
 
-	window.setFramerateLimit(60);
+	window.setFramerateLimit(61);
 	float dX, dY, FPS;
 	float mX = 0; float mY = 0;
 	sf::RectangleShape shape(view.getSize());
@@ -244,6 +244,8 @@ int main() {
 					//Bullet* b = new Bullet(mouseForce);
 					//b->next = bullets;
 					//bullets = b;
+					
+					explosions.push_back(Explosion(mX, mY, 5));
 				}
 			}
 			else if (event.type == sf::Event::MouseButtonPressed) {
@@ -251,13 +253,10 @@ int main() {
 					if (player != nullptr) {
 						for (Part p : player->parts) {
 							if (parts[p.i].turret) {
-								Position pos(partX(player->pos, p), partY(player->pos, p), player->pos.a, player->pos.dx, player->pos.dy, player->pos.da);
-								pos.a = p.turret_angle;
-								pos.dx = fX(pos, p.turret_angle);
-								pos.dy = fY(pos, p.turret_angle);
+								Position pos(partX(player->pos, p), partY(player->pos, p), p.turret_angle, 0, -3);
 								Bullet* b = new Bullet(pos);
-								//b->pos.x += cos(b->pos.a + rad(90)) * 6;
-								//b->pos.y += sin(b->pos.a + rad(90)) * 6;
+								b->pos.x += cos(b->pos.a + rad(90)) * 6;
+								b->pos.y += sin(b->pos.a + rad(90)) * 6;
 								b->next = bullets;
 								bullets = b;
 							}

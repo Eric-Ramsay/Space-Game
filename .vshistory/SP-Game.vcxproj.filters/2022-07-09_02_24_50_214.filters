@@ -34,9 +34,6 @@
     <None Include="space.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="explosion.frag">
-      <Filter>Shaders</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ship_functions.h">

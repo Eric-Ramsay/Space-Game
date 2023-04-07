@@ -151,7 +151,6 @@
     <Text Include="Game Idea.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="explosion.frag" />
     <None Include="planet.frag" />
     <None Include="space.frag" />
   </ItemGroup>
